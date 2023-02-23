@@ -1,0 +1,214 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>
+        
+
+        Home Page
+          
+        
+    </title>
+    <link rel="icon" type="image/x-icon" href="/static/img/webpage.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+     <!--Submisiions -->
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+    
+     
+</head>
+<body>
+    
+    <input type="checkbox" id="sidebar-toggle">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span class="ti-unlink"></span> 
+                <span>CRMS</span>
+            </h3> 
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+        </div>
+        
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/faculty_dashboard/">
+                        <i class="bi bi-speedometer2 me-2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/faculty_inbox/">
+                        <i class="bi bi-inbox-fill me-2"></i>
+                        <span>Inbox</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/faculty_profile/">
+                        <i class="bi bi-person-circle me-2"></i> 
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/faculty_take_attendace/">
+                        <i class="ti-layout-cta-right"></i> 
+                        <span>Take Attendance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/faculty_upload_assignment/">
+                        <i class="bi bi-upload  me-2"></i>
+                        <span>Upload Assignment</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="/faculty_assignment_list/">
+                        <i class="bi    bi-book-half me-2"></i>
+                        <span>Assignment List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/faculty_view_submissions/">
+                        <i class="bi bi-bar-chart-line-fill  me-2"></i>
+                        <span>View Submissions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/faculty_student_list/">
+                        <i class="bi bi-people-fill me-2"></i>
+                        <span>Students List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/faculty_write_Notice/">
+                        <i class="bi bi-pencil-square me-2"></i>
+                        <span>Write Notice</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/faculty_password_change/">
+                        <i class="bi bi-shield-lock-fill me-2"></i>
+                        <span>change Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/faculty_time_table/">
+                        <i class="ti-layout-grid3"></i>
+                        <span>Time table</span>
+                    </a>
+                </li>
+                <br><br>
+                <li>
+                    <a href="/logout/" class="logout text-dark"data-bs-toggle="tooltip" data-bs-placement="right" title="logout" ><i class="bi bi-box-arrow-left me-3"></i> 
+                        <span class="d-none d-md-inline">Log Out </span></a></li>
+            </ul>
+        </div>
+    </div>
+    
+
+ 
+    <div class="main-content">
+        
+        <header>
+            <div class="search-wrapper">
+                <span class=""><i class="bi bi-search fw-bold"></i></span>
+                <input type="search" placeholder="Search">
+            </div>
+            <div class="#"> 
+                <img src="/media/faculty/profiles/download.png" style="width: 30px;height: 30px;border-radius: 50%;overflow: hidden;background-color: blue;display:inline-block;vertical-align:middle;border:3px solid #424a5b;">
+
+                <span class="fw-bold fs-6 ms-1 text-dark me-4">faculty_1</span>
+                <span  data-bs-toggle="offcanvas" data-bs-target="#notice" aria-controls="notice"><i class="bi bi-bell-fill me-2 text-secondary fs-5"></i></span>
+                <i class="bi bi-chat-square-dots-fill fs-5 me-3 text-secondary"></i>
+               
+            </div>
+        </header>
+        
+<main>
+    <h2 class="dash-title">Submissions</h2>
+    <section class="recent">
+        <div class="table-div">
+            <div class="table-card" style="overflow-x:scroll;">
+                <table id="example" class="table table-striped table-hover p-3" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Student ID</th>
+                            <th>Class </th>
+                            <th>Date of Sub</th>
+                            <th>Assignment ID</th>
+                            <th>Title</th>
+                            <th>Answer Scripts</th>
+                            <th>Assignment Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>N180565</td>
+                            <th>CSE-04</th>
+                            <td>23/03/2006</td>
+                            <td>14567</td>
+                            <td>New </td>
+                            <td><button class="button-9" >View</button></td>
+                            <td style="color: green;">checked</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>N180530</td>
+                            <th>CSE-02</th>
+                            <td>23/03/2006</td>
+                            <td>12345</td>
+                            <td>New</td>
+                            <td><button class="button-9" >View</button></td>
+                            <td style="color: green;">checked</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>1</td>
+                            <td>user_1</td>
+                            <th>CSE-01</th>
+                            <td>Aug. 19, 2022</td>
+                            <td>567890</td>
+                            <td>faculty 1 assignment-1</td>
+                            <td><a href="" download><button class="button-9" ><b>Answer Script </b> </button></a></td>
+                            
+                            <td style="color: green;">Awarded</td>
+                            
+                        </tr>
+                        
+                    </tbody>
+                <table>
+                    <script>$(document).ready(function () {
+                        $('#example').DataTable();
+                    });</script>
+            </div>
+        </div>
+    </section>
+</main>
+
+    </div>
+
+
+       <!--Notice-->
+       <div class="offcanvas offcanvas-end" tabindex="-1" id="notice" aria-labelledby="noticeLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="noticeLabel">Offcanvas right</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            ...
+        </div>
+        </div>
+        <!--end Notice-->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    
+</body>
+</html>

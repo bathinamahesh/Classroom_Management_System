@@ -1,0 +1,237 @@
+{% extends 'student/student_main.html' %}
+{% load static %}
+{% load newtags %}
+
+{% block content %}
+<main>
+    <h2 class="dash-title">Assignments</h2>
+    <section class="recent">
+        {% for item in assignments %}
+        <div class="table-div">
+
+            <div class="card text-dark   mb-3 shadow  border-light  border"  style="border-radius: 5px;">
+                <div class="card-header fw-bold " style="background-color: rgb(202, 218, 238);">{{ item.assignment_title }} (ID : {{ item.assignment_id }}) </div>
+                <div class="card-body row">
+
+                  
+                   
+                   <div class="col-12 col-md-6">
+                    <h5 class="card-title">Marks : {{ marksgiven|index:forloop.counter0 }}/20</h5>
+                    <table class="table " >
+                        <tbody>
+                          <tr>
+                            <th scope="col">Faculty</th>
+                            <td scope="col">{{ item.assignment_faculty }}</td>
+                          </tr>
+                          <tr>
+                            <th scope="col">Subject</th>
+                            <td scope="col">{{ item.assignmentsubject }}</td>
+                          </tr>
+                          <tr>
+                            <th scope="col">Date</th>
+                            <td scope="col">
+                                {{ item.assignment_due }}
+                            </td>
+                          </tr>
+                        
+                        </tbody>
+                    </table>
+                   </div>
+                 
+                   <div class="col-12 col-md-6 text-center">
+                        {% if submittedlist|index:forloop.counter0 %}
+                            <h5 class="text-start fs-6">Instructions</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <button class="btn btn-outline-dark">Questions</button>
+                            <mark style="float:right">Already Submitted</mark>
+                        {% else %}
+                            <div class="d-flex justify-content-between">
+                                <h5 class="text-start fs-6">Instructions</h5>
+                                <button class="btn btn-outline-dark btn-sm">Questions</button>
+                            </div>
+                                <p class="mt-2" style="font-size: smaller;">hello new instructions {{ item.assignment_desc }}</p>
+                            
+                                <form method="POST" action="/assignupload/{{ item.assignment_id }}" novalidate=""  autocomplete="off" enctype="multipart/form-data" >{% csrf_token %}
+                                <p class="card-text mt-2 fw-bold">upload your Assignment file here...!</p>
+                                <div class="mb-3 col-12 row md-6">
+                                    <label for="{{ item.assignment_id }}" class="form-label fw-bold"> </label>
+                                    <input type="file" class="form-control p-3"  name="uploadfile" id="{{ item.assignment_id }}"  required >
+                                    <button type="submit" class="glow-on-hover" value=Submit> submit </button>
+                                </div>
+                                
+
+                            </form>
+                        {% endif %}
+                                        
+                        <!--  endif  -->
+                    </div>
+                
+                </div>
+              </div>
+              
+        </div>
+        {% endfor %}
+        <style>
+
+            /*Style inputs, select elements and textareas */
+            input[type=text], select, textarea{
+                width: 95%;
+                padding: 15px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                resize: vertical;
+            }
+
+            /* Style the label to display next to the inputs */
+            label {
+                padding: 12px 12px 12px 12px;
+                display: inline-block;
+            }
+
+            /* Style the submit button */
+            input[type=submit] {
+                background-color: #04AA6D;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size:30px;
+            }
+
+            /* Style the container */
+            .container-new-example{
+                border-radius: 5px;
+                background-color:white;
+                padding: 30px;
+            }
+
+        
+            /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+            @media screen and (max-width: 600px) {
+                .col-25, .col-75, input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+                }
+            }
+            /*-------Button--Effects----*/
+
+            .glow-on-hover {
+                width: 140px;
+                height: 50px;
+                border: none;
+                outline: none;
+                color: #fff;
+                background: #111;
+                cursor: pointer;
+                position: relative;
+                z-index: 0;
+                border-radius: 10px;
+                margin-left:40%;
+                
+            }
+
+            .glow-on-hover:before {
+                content: '';
+                background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+                position: absolute;
+                top: -2px;
+                left:-2px;
+                background-size: 400%;
+                z-index: -1;
+                filter: blur(5px);
+                width: calc(100% + 4px);
+                height: calc(100% + 4px);
+                animation: glowing 20s linear infinite;
+                opacity: 0;
+                transition: opacity .3s ease-in-out;
+                border-radius: 10px;
+            }
+
+            .glow-on-hover:active {
+                color: #000
+            }
+
+            .glow-on-hover:active:after {
+                background: transparent;
+            }
+
+            .glow-on-hover:hover:before {
+                opacity: 1;
+            }
+
+            .glow-on-hover:after {
+                z-index: -1;
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: #111;
+                left: 0;
+                top: 0;
+                border-radius: 10px;
+            }
+
+            @keyframes glowing {
+                0% { background-position: 0 0; }
+                50% { background-position: 400% 0; }
+                100% { background-position: 0 0; }
+            }
+            /*Style Alert BOx */
+            .alert{font-family: -apple-system,BlinkMacSystemFont,'Roboto','Segoe UI','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Neue',sans-serif;
+                min-height: 18px;
+                padding: 12px 15px 15px;
+                margin: 5px auto;
+                border-radius: 4px;
+                border-left: 4px solid;
+                opacity:1;
+                transition: opacity 0.6s;
+                max-width:40%
+            }
+            .warning {
+                background: rgba(244, 215, 201, .37);
+                color: #d93025;
+                border-color: #d93025;
+            }
+            .info {
+                background: rgba(186, 208, 228, .37);
+                color: #00539f;
+                border-color: #00539f;
+            }
+            .success {
+                background: #edf7ee;
+                color: #4CAF50;
+                border-color: #4CAF50;
+            }
+            .tip {
+                background: #fff5e6;
+                color: #ff9800;
+                border-color: #ff9800;
+            }
+            .alert-close{
+                padding-left: 15px;
+                font-weight: bold;
+                float: right;
+                font-size: 20px;
+                line-height: 18px;
+                cursor: pointer;
+                transition:.30s all;
+            }
+            .alert-close:hover{
+                color:#000;
+            }
+            .alert code, .alert .mark{
+                background: #fff;
+                opacity: 0.9;
+                padding: 3px 5px;
+                border-radius: 4px;
+                font-family: Consolas,Monaco,'Andale Mono',monospace;
+                font-size: 89%;
+                font-weight: normal;
+            }
+    </style>
+
+
+    </section>
+</main>
+{% endblock  %}

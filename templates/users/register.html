@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Muhamad Nauval Azhar" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="This is a login page template based on Bootstrap 5"
+    />
+    <title>
+      {% block title %}
+
+      CRMS -Register Page
+        
+      {% endblock title %}
+  </title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/webpage.png' %}">
+    <link
+      href="{% static 'css/bootstrap.min.css' %}"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <section class="h-100">
+      <div class="container h-100">
+        <div class="row justify-content-sm-center h-100">
+          <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+            <div class="text-center my-5">
+              <img src="{% static 'img/logo.jpeg' %}" alt="logo" width="100" />
+            </div>
+            <div class="card shadow-lg">
+              <div class="card-body p-5">
+                <h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
+                <form
+                  method="POST"
+                  class="needs-validation"
+                  novalidate=""
+                  autocomplete="off"
+                >{% csrf_token %}
+                <div class="mb-3">
+                <label for="user_status">Choose User Status :</label>
+                  <select name="user_config" id="user_staus">
+                    <option value="student">student</option>
+                    <option value="faculty">faculty</option>
+                    <option value="admin">Admin</option>
+
+                  </select>
+                </div>
+                  <div class="mb-3">
+                    <label class="mb-2 text-muted" for="id_user" >User ID</label>
+                    <input
+                      id="id_user"
+                      type="text"
+                      class="form-control"
+                      name="user_id"
+                      value=""
+                      required
+                      autofocus
+                    />
+                    <div class="invalid-feedback">ID is required</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="mb-2 text-muted" for="first_name" >First Name</label>
+                    <input
+                      id="first_name"
+                      type="text"
+                      class="form-control"
+                      name="user_firstname"
+                      value=""
+                      required
+                      autofocus
+                    />
+                    <div class="invalid-feedback">First Name is required</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="mb-2 text-muted" for="last_name" >Last Name</label>
+                    <input
+                      id="last_name"
+                      type="text"
+                      class="form-control"
+                      name="user_lastname"
+                      value=""
+                      required
+                      autofocus
+                    />
+                    <div class="invalid-feedback">Last Name is required</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="mb-2 text-muted" for="birthday" style="padding-right:10px;">Date Of Birth :  </label>
+                          <input type="date" id="birthday" name="user_dob">
+                    <div class="invalid-feedback">DOB required</div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="mb-2 text-muted" for="select_sex"
+                      >Gender</label
+                    >
+                    <select class="form-select" aria-label="Default select example" name="user_sex" id="select_sex">
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>                   
+                  <div class="mb-3" >
+                    <label class="mb-2 text-muted" for="email"
+                      >E-mail Address</label
+                    >
+                    <input
+                      id="email"
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      value=""
+                      required
+                    />
+                    <div class="invalid-feedback">Email is invalid</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="mb-2 text-muted" for="password"
+                      >Password</label
+                    >
+                    <input
+                      id="password"
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      required
+                    />
+                    <div class="invalid-feedback">Password is required</div>
+                  </div>
+                  <div class="mb-3" style="background-color:black;">
+                    {% if errorcame %}
+                    <script language="JavaScript">alert('UserID Already Exists, Try another')</script>
+                    {% endif %}
+                  </div>
+
+                  <p class="form-text text-muted mb-3">
+                    By registering you agree with our terms and condition.
+                  </p>
+
+                  <div class="align-items-center d-flex">
+                    <button type="submit" class="btn btn-primary ms-auto">
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="card-footer py-3 border-0">
+                <div class="text-center">
+                  Already have an account?
+                  <a href="{% url 'login' %}" class="text-dark">Login</a>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-5 text-muted">
+              Copyright &copy; 2022-2024 &mdash; CRMS
+           </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="{% static 'js/login.js'%}"></script>
+  </body>
+</html>

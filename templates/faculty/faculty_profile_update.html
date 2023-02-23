@@ -1,0 +1,217 @@
+{% extends 'faculty/faculty_main.html' %}
+{% load static %}
+{% block content %}
+<main>
+
+    
+ 
+    <section class="recent">
+        <div class="table-div">
+            <div class="table-card">
+                <form method="POST" class="needs-validation" nonalidate="" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
+                        <div class="row justify-content-evenly p-4">
+                            <h3 class="text-center fw-bold">Edit Profile</h3>
+                            <div class="mb-3 col-12 col-md-6 d-none">
+                                <label for="id" class="form-label fw-bold"> <i class="bi bi-clipboard2-fill"></i> Profile ID</label>
+                                <input type="text" class="form-control p-3" id="id" name="profile_id" placeholder="Enter id for assignment...." value="{{ userprofile.user_id }}" readonly >
+                            </div>
+
+                           
+                            <div class="mb-3 col-12 col-md-6">
+                                <label for="fname" class="form-label fw-bold"> <i class="bi bi-person-fill"></i> First Name</label>
+                                <input type="text" class="form-control p-3"  id="fname" name="profile_first" placeholder="{{ userprofile.first_name }}"  required/>
+                            </div>
+
+                            <div class="mb-3 col-12 col-md-6">
+                                <label for="lname" class="form-label fw-bold"> <i class="bi bi-person"></i> Last Name</label>
+                                <input type="text" class="form-control p-3"  id="lname" name="profile_last" placeholder="{{ userprofile.last_name }}"  required/>
+                            </div>
+
+                            <div class="mb-3 col-12 col-md-6">
+                                <label for="email" class="form-label fw-bold"> <i class="bi bi-envelope-fill"></i> Email</label>
+                                <input type="text" class="form-control p-3"  id="email"  name="profile_email" placeholder="{{ userprofile.email }}" required/>
+                            </div>
+
+
+                            <div class="mb-3 col-12 col-md-6">
+                                <label for="gender" class="form-label fw-bold"> <i class="bi bi-gender-ambiguous"></i>  Gender</label>
+                                <select class="form-select p-3  " aria-label="gender" name="profile_gender" required>
+                                    <option value="">----select gender----</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                  </select>
+                            </div>
+                            <div class="mb-3 col-12 col-md-6">
+                                <label for="dob" class="form-label fw-bold"> <i class="bi bi-calendar-fill"></i> Date of birth</label>
+                                <input type="date" class="form-control p-3"  name="profile_birth" id="dob"    required  >
+                            </div>
+
+                             
+                            <div class="mb-3 col-12 col-md-6">
+                                <label for="pic" class="form-label fw-bold"> <i class="bi bi-image-alt"></i> Profile pic</label>
+                                <input type="file" class="form-control p-3"  name="profile_pic" id="pic"  required  >
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <div class="form-floating">
+                                    <textarea class="form-control"  name="profile_bio" placeholder="Write something.."   id="bio" style="height: 100px">{{ userprofile.bio }}</textarea>
+                                    <label for="bio ">  Bio  <i class="bi bi-fingerprint"></i> </label>
+                                  </div>
+                            </div>
+
+
+                            <div class="col-12 mt-3">
+                                <div class="form-floating">
+                                    <textarea class="form-control"  name="profile_location" placeholder="{{ userprofile.location }}"  style="height: 100px" required ></textarea>
+                                    <label for="location">  Location  <i class="bi bi-geo-alt-fill"></i></label>
+                                  </div>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <button type="submit" class="glow-on-hover" value=Submit> submit </button>
+                            </div>
+                            
+
+
+                            
+                        </div>
+                </form>
+            </div>
+                <style>
+                                                /* Style inputs, select elements and textareas */
+                        input[type=text], select, textarea{
+                            width: 95%;
+                            padding: 15px;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            box-sizing: border-box;
+                            resize: vertical;
+                        }
+                        
+                        /* Style the label to display next to the inputs */
+                        label {
+                            padding: 12px 12px 12px 12px;
+                            display: inline-block;
+                        }
+                        
+                        /* Style the submit button */
+                        input[type=submit] {
+                            background-color: #d1cfc9;
+                            color: white;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-size:30px;
+                        }
+                        
+                        /* Style the container */
+                        .container-new-example{
+                            border-radius: 5px;
+                            background-color:white;
+                            padding: 30px;
+                        }
+                        
+                        /* Floating column for labels: 25% width */
+                        .col-25 {
+                            float: left;
+                            width: 15%;
+                            margin-top: 10px;
+                        }
+                        
+                        /* Floating column for inputs: 75% width */
+                        .col-75 {
+                            float: left;
+                            width: 45%;
+                            margin-top: 10px;
+                        }
+                        
+                        /* Clear floats after the columns */
+                        .row:after {
+                            content: "";
+                            display: table;
+                            clear: both;
+                        }
+                        
+                        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+                        @media screen and (max-width: 600px) {
+                            .col-25, .col-75, input[type=submit] {
+                            width: 100%;
+                            margin-top: 0;
+                            }
+                        }
+                        /*-------Button--Effects----*/
+
+                            .glow-on-hover {
+                                width: 180px;
+                                height: 50px;
+                                border: none;
+                                outline: none;
+                                color: #fff;
+                                background: #111;
+                                cursor: pointer;
+                                position: relative;
+                                z-index: 0;
+                                border-radius: 10px;
+                                margin-top:3%;
+                                margin-left:-2%;
+                                
+                            }
+
+                            .glow-on-hover:before {
+                                content: '';
+                                background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+                                position: absolute;
+                                top: -2px;
+                                left:-2px;
+                                background-size: 400%;
+                                z-index: -1;
+                                filter: blur(5px);
+                                width: calc(100% + 4px);
+                                height: calc(100% + 4px);
+                                animation: glowing 20s linear infinite;
+                                opacity: 0;
+                                transition: opacity .3s ease-in-out;
+                                border-radius: 10px;
+                            }
+
+                            .glow-on-hover:active {
+                                color: #000
+                            }
+
+                            .glow-on-hover:active:after {
+                                background: transparent;
+                            }
+
+                            .glow-on-hover:hover:before {
+                                opacity: 1;
+                            }
+
+                            .glow-on-hover:after {
+                                z-index: -1;
+                                content: '';
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background: #111;
+                                left: 0;
+                                top: 0;
+                                border-radius: 10px;
+                            }
+
+                            @keyframes glowing {
+                                0% { background-position: 0 0; }
+                                50% { background-position: 400% 0; }
+                                100% { background-position: 0 0; }
+                            }
+
+                </style>
+                {% if errorsave %}
+                    <script language="JavaScript">alert('Please Fill  Form Correctly :(')</script>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock  %}
+

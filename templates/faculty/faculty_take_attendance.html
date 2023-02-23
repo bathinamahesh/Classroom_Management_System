@@ -1,0 +1,74 @@
+{% extends 'faculty/faculty_main.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <h2 class="dash-title">Take Attendance</h2>
+    <section class="recent">
+        <div class="table-div">
+
+            <nav class="navbar  mt-2" style="background-color: rgb(154, 154, 154); color: #fff;">
+                <div class="container-fluid">
+                  <a class="navbar-brand fw-bold ms-3">CLASS</a>
+                  <form class="d-flex" method="POST" novalidate=""  autocomplete="off" >
+                    {% csrf_token %}
+
+                    <select id="standard-select" class="form-select me-3" name="select_student_class" >
+                        <option value="">--Select Class--</option>
+                        {% for class in total_classes%}
+                        <option value="{{class.class_name}}">{{class.class_name}}</option>
+                        {% endfor %}
+                    </select>
+                    <button class="btn btn-outline-dark" type="submit">Submit</button>
+                  </form>
+                </div>
+              </nav>
+
+                <br><br>
+                
+                <form method="POST" action="/confirmation/{{ classroom_name }}" novalidate=""  autocomplete="off">
+                    {% csrf_token %}
+                <div class="table-card p-3" style="overflow-x:scroll;">
+                    <table id="example" class="table table-striped table-hover " style="width:100%">
+                        <thead>
+                            <tr style="background-color: rgb(192, 210, 243); ">
+                                <th class="p-3">Roll No</th>
+                                <th class="p-3">Student ID</th>
+                                <th class="p-3">Name</th>
+                                <th class="p-3">Present/Absent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                            {% for item in students_list_test %}
+                         
+                            <tr>
+                                <tr class="">
+                                    <th > {{ item.roll }}</th>
+                                    <td>{{ item.user_id }}</td>
+                                    <td>{{ item.first_name }}</td>
+                                    <td>
+                                        <div class="btn-group input-field form-check" role="group" aria-label="Basic radio toggle button group" aria-required="true">
+                                            <input type="radio" class="btn-check"   name="{{ item.user_id }}" value="present" id="{{ item.user_id }}_present" autocomplete="off"  checked>
+                                            <label class="btn btn-outline-success" for="{{ item.user_id }}_present" >Present</label>
+                                          
+                                            <input type="radio" class="btn-check"  name="{{ item.user_id }}" value="absent" id="{{ item.user_id }}_absent" autocomplete="off"  >
+                                            <label class="btn btn-outline-danger" for="{{ item.user_id }}_absent" >Absent</label>
+                                         </div>
+                                    </td>
+                                </tr>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    <table>
+                        <center><button class="mb-3 mt-2 fw-bold" type="submit" style="background-color: rgb(18, 1, 1); color:lavender ; padding: 2px 25px 2px 25px;">Submit</button></center>
+                        <script>$(document).ready(function () {
+                            $('#example').DataTable();
+                        });</script>
+                </div>
+            </form>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock  %}

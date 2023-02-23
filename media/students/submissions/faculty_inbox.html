@@ -1,0 +1,58 @@
+{% extends 'faculty/faculty_main.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <h2 class="dash-title">Inbox</h2>
+    <section class="recent">
+        <div class="table-div">
+            <div class="table-card">
+                
+                <!--msg card start-->
+                   <div class="p-3 shadow " style="border-left: 4px solid rgb(0, 0, 0) ;">
+                        <div class="fw-bold mb-1 ">
+                            <img src="https://missionvet.ca/wp-content/uploads/2020/01/User-Profile-PNG-1.png" alt=""  class="ms-2" style="width: 30px; height:30px; border-radius: 50%; border: 3px solid rgb(67, 67, 132);">
+                            <span>User name (User_Id)</span>
+                            <span class="text-end start-0">
+                                <button type="button" class="btn  fw-bold" data-bs-toggle="modal" data-bs-target="#replyModal" style="float:right; background-color: black; color: aliceblue; ">
+                                    Reply
+                                </button>
+                            </span>
+                        </div>
+                        <div>
+                            <p class="ms-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, quisquam iusto? Odio itaque temporibus unde quia labore exercitationem repellendus magni.</p>
+                        </div>
+                        <div>
+                          <!-- Button trigger modal -->    
+                                <!-- Modal -->
+                                <div class="modal fade" id="replyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Send to User_Name</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                                <label for="floatingTextarea" style="height:100px;">Type your msg here..!</label>
+                                              </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Send</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                        </div>
+                   </div>
+
+
+                   <!--msg card end-->
+
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock  %}

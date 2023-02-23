@@ -1,0 +1,88 @@
+{% extends 'faculty/faculty_main.html' %}
+{% load static %}
+
+{% block content %}
+<main> 
+            <section class="recent">
+                <div class="table-div">
+                    <div class="table-card ">
+                        <center><h3>Upload Assignment   </h3></center>   
+                        <div class="time-table p-5">
+                          
+                            <form method="POST" class="needs-validation" nonalidate="" autocomplete="off" enctype="multipart/form-data">
+                            {% csrf_token %}
+                                <div class="row justify-content-evenly">
+
+                                    <div class="mb-3 col-12 col-md-6">
+                                    <label for="title" class="form-label fw-bold"> <i class="bi bi-clipboard2-fill"></i> Assignment Title</label>
+                                    <input type="text" class="form-control p-3"  name="assign_title" id="title"  placeholder="Enter title for Assignment" required  >
+                                    </div>
+
+                                    <div class="mb-3 col-12 col-md-6">
+                                        <label for="id" class="form-label fw-bold"> <i class="bi bi-pen-fill"></i> Assignment ID</label>
+                                        <input type="text" class="form-control p-3" name="assign_id" id="id"  placeholder="Enter Assignment ID" required>
+                                    </div>
+
+                                    
+                                    <div class="mb-3 col-12 col-md-6">
+                                    <label for="date" class="form-label fw-bold"> <i class="bi bi-calendar"></i> Due date</label>
+                                    <input type="date" class="form-control p-3" id="date" required  name="assign_due">
+                                    </div>
+
+                                    <div class="mb-3 col-12 col-md-6">
+                                        <label for="id" class="form-label fw-bold"> <i class="bi bi-diagram-3-fill"></i>  class</label>
+                                        <select class="form-select p-3  " aria-label="Default select example" name="assign_class" required>
+                                            <option value="">----select the class----</option>
+                                            {% for class in total_classes%}
+                                            <option value="{{class.class_name}}">{{class.class_name}}</option>
+                                            {% endfor %}
+                                            
+                                          </select>
+                                    </div>
+
+
+                                    <div class="mb-3 col-12 col-md-6">
+                                        <label for="file" class="form-label fw-bold"> <i class="bi bi-file-earmark-font-fill"></i> Assignment file</label>
+                                        <input type="file" class="form-control p-3" id="file"     name="assignupload" required>
+                                    </div>
+    
+                                    <div class="mb-3 col-12 col-md-6">
+                                            <label for="marks" class="form-label fw-bold"> <i class="bi bi-clipboard-data-fill"></i> Assignment Marks</label>
+                                            <input type="number" class="form-control p-3" name="assign_marks" id="marks" required>
+                                    </div>
+
+                                    
+                                    <div class="col-12 mt-3">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" name="assign_desc" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                            <label for="floatingTextarea2 ">  Instructions  <i class="bi   bi-chat-square-dots"></i></label>
+                                          </div>
+                                    </div>
+    
+
+
+                                </div>
+
+                                <center><button type="submit" class="btn btn-primary mt-3 fw-bold " style="padding: 5px 30px 5px 30px;background-color:black;height:50px;width:150px;margin-left:0%;">Submit</button></center>
+                              </form>
+                          
+                        </div>
+                    </div>
+                   
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+    </div>
+    
+                </style>
+                {% if upload_done %}
+                    <script language="JavaScript">alert('You have Uploaded Assignment Succesfully :(')</script>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock  %}

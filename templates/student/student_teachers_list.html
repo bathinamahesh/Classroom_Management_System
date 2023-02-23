@@ -1,0 +1,55 @@
+{% extends 'student/student_main.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <h2 class="dash-title">Teachers Assigned</h2>
+    <section class="recent">
+        <div class="table-div">
+            <div class="row justify-content-between">
+
+                {% for i in  tot_teachers %}
+                
+                <div class="card mb-3 shadow col-12 col-md-6 ">
+                    <div class="row g-0">
+                      <div class="col-md-4 text-center p-2">
+                        <img src="{{ i.faculty_name.facultyname.profile_pic.url }}" class="rounded" style="height:220px;width:180px;margin-top:7%;"alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title mt-2">{{ i.faculty_name }}</h5>
+                          <table class="table">
+                            <tbody>  
+                            <tr>
+                                <th scope="col"> <i class="bi bi-diagram-3-fill"></i> Branch</th>
+                                <td scope="col"> CSE</td>
+                            </tr>
+                            <tr>
+                                <th scope="col"> <i class="bi bi-book-fill"></i> Subject</th>
+                                <td scope="col"> {{ i.subject_name }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="col"> <i class="bi bi-layers-fill"></i>  Specialization</th>
+                                <td scope="col"> {{ i.subject_name }}-----</td>
+                            </tr>
+                            <tr>
+                                <th scope="col"> <i class="bi bi-diagram-2"></i> Class</th>
+                                <td scope="col"> {{ i.class_name }}</td>
+                            </tr>
+                            </tbody>
+                             </table>
+                        </div>
+                        <div class="text-center mb-1 ">
+                            <p class="card-text"><small class="text-muted"><i class="bi bi-envelope-fill" style="text-decoration:none ; "></i> {{ i.faculty_name.facultyname.email }}</small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {% endfor %}
+
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock  %}

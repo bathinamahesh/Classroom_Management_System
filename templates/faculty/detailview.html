@@ -1,0 +1,36 @@
+{% extends 'faculty/faculty_main.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <h2 class="dash-title">Attendance details : {{ attendobj }}</h2>
+    <section class="recent">
+        <div class="table-div">
+            <div class="table-card">
+    
+                   <!--msg card end-->
+                   <table id="example" class="table table-striped table-hover p-3" style="width:100%">
+                    <thead style="background-color:skyblue;">
+                        <tr>
+                            <th>S.No</th>
+                            <th>Student ID</th>
+                            <th>Status </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for std in total_stude %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ std.studentid }}</td>
+                            <td>{{ std.presentorabsent }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                <table>
+
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock  %}

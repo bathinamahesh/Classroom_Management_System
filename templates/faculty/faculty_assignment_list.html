@@ -1,0 +1,52 @@
+{% extends 'faculty/faculty_main.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <h2 class="dash-title">Assignments</h2>
+    <section class="recent">
+      {% for item in assignments %}
+        <div class="table-div">
+
+            <div class="card text-dark   mb-3 shadow  border-light  border"  style="border-radius: 5px;">
+                <div class="card-header fw-bold " style="background-color: rgb(202, 218, 238);">{{ forloop.counter }}.{{ item.assignment_title }} (ID :{{ item.assignment_id }}) </div>
+                <div class="card-body row">
+
+                  
+                   
+                   <div class="col-12 col-md-6">
+                    <h5 class="card-title">Marks : {{ item.assignment_marks }}</h5>
+                    <table class="table " >
+                        <tbody>
+                          <tr>
+                            <th scope="col">Class</th>
+                            <td scope="col">{{ item.assignment_class }}</td>
+                          </tr>
+                          <tr>
+                            <th scope="col">Branch</th>
+                            <td scope="col">CSE</td>
+                          </tr>
+                          <tr>
+                            <th scope="col">Date</th>
+                            <td scope="col">{{ item.assignment_created }}</td>
+                          </tr>
+                        
+                        </tbody>
+                    </table>
+                   </div>
+                 
+                   <div class="col-12 col-md-6 text-center">
+                        <h5 class="text-start fs-6">Instructions</h5>
+                        <p class="card-text">{{ item.assignment_desc }}hello there iam mahesh from cse2 hope u all good</p>
+                        <a href="{{ item.assignment_file.url }}" download><button class="btn btn-outline-dark" style="width:150px;position: absolute;right:0;margin-right:19%;bottom:30px;"><b>File</b> </button></a>
+                        <!--<button class="btn btn-dark">Assignment</button>-->
+                    </div>
+                
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </section>
+    
+</main>
+{% endblock  %}

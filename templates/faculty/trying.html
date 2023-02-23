@@ -1,0 +1,45 @@
+{% extends 'faculty/faculty_main.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <h2 class="dash-title">Recording Attendance</h2>
+    <section class="recent">
+        <div class="table-div">
+            <div class="row">
+            {% for item in totalclasses %}
+            
+            
+                <div class="p-3 shadow mb-3" style="border-left: 4px solid rgb(0, 0, 0) ;">
+                    <div class="fw-bold mb-1 ">
+                        <form method="POST" action="/DetailAttendance/" novalidate=""  autocomplete="off" enctype="multipart/form-data" >{% csrf_token %}
+                        <span><i class="bi bi-calendar-check-fill"></i> {{ item.faculty_taken }}</span>
+                        <span><i class="bi bi-calendar-check-fill" name="maindate"></i> {{ item.taken_at }}</span>
+                        <input type="text" value="{{ item.faculty_taken.faculty_name }}" name="faculty" style="display:none;">
+                        <input type="text" value="{{ item.faculty_taken.subject_name }}" name="subject" style="display:none;">
+                        <input type="text" value="{{ item.faculty_taken.class_name }}" name="class" style="display:none;">
+                        <input type="date" value="{{ item.taken_at }}" name="date" style="display:none;">
+                    </div>
+                    <button type="submit" class="btn  fw-bold"  style="float:right; background-color: black; color: aliceblue; ">
+                        View
+                    </button>
+                </form>
+                    <div class="mt-2">
+                        <div>
+                            <span class="ms-3 fw-bold">Class  : </span> <span> {{ item.faculty_taken.class_name }}</span>
+                            <span class="ms-3 fw-bold">Branch : </span> <span> CSE</span>
+                            <span class="ms-3 fw-bold">Year : </span> <span> E02</span>
+                        </div>
+                        <div class="progress-bar mt-2 fw-bold progress-bar-striped progress-bar-animated bg-dark text-light" role="progressbar" aria-label="date" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">75%</div>
+                    </div>
+
+                </div>
+            {% endfor %}
+            {% if errorcame %}
+            <script language="JavaScript">alert('Today Attendance already Taken ')</script>
+            {% endif %}
+                
+        </div>
+    </section>
+</main>
+{% endblock  %}

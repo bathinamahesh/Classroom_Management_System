@@ -1,0 +1,73 @@
+{% extends 'faculty/faculty_main.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <h2 class="dash-title">Students List</h2>
+    <section class="recent">
+
+        <div class="table-div">
+
+            <nav class="navbar  mt-2" style="background-color: rgb(154, 154, 154); color: #fff;">
+                <div class="container-fluid">
+                  <a class="navbar-brand fw-bold ms-3">CLASS</a>
+                  <form class="d-flex" method="POST" novalidate=""  autocomplete="off" >
+                    {% csrf_token %}
+
+                    <select id="standard-select" class="form-select me-3" name="select_student_class" >
+                        <option value="">--Select Class--</option>
+                        <option value="CSE-01">CSE-01</option>
+                        <option value="CSE-02">CSE-02</option>
+                        <option value="CSE-03">CSE-03</option>
+                        <option value="CSE-04">CSE-04</option>
+                        <option value="CSE-05">CSE-05</option>
+                    </select>
+                    <button class="btn btn-outline-dark" type="submit">Submit</button>
+                  </form>
+                </div>
+              </nav>
+
+                <br><br>
+                
+                <form method="POST" action="/confirmation/{{ classroom_name }}" novalidate=""  autocomplete="off">
+                    {% csrf_token %}
+                <div class="table-card p-3" style="overflow-x:scroll;">
+                    <table id="example" class="table table-striped table-hover " style="width:100%">
+                        <thead>
+                            <tr style="background-color: rgb(192, 210, 243); ">
+                                <th class="p-3">Roll No</th>
+                                <th class="p-3">Student ID</th>
+                                <th class="p-3">Name</th>
+                                <th class="p-3">Email</th>
+                                <th class="p-3">Gender</th>
+                                <th class="p-3">Date of birth</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in students_list_test %}
+                         
+                            <tr>
+                                <tr class="">
+                                    <th class="p-3"> {{ item.roll }}</th>
+                                    <td class="p-3">{{ item.user_id }}</td>
+                                    <td class="p-3">{{ item.first_name }}</td>
+                                    <td class="p-3">{{ item.email }}</td>
+                                    <td class="p-3">{{ item.sex }}</td>
+                                    <td class="p-3">{{ item.birth_date }}</td>
+                                </tr>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    <table>
+
+                </div>
+            </form>
+            </div>
+        </div>
+
+
+
+
+    </section>
+</main>
+{% endblock  %}

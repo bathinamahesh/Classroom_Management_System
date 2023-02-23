@@ -1,0 +1,56 @@
+{% extends 'student/student_main.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <section class="recent">
+        <div class="table-div">
+            <div class="table-card">
+                <h3 class="dash-title text-center mt-5">Ask Faculty</h3>
+
+                <form method="POST" class="needs-validation" nonalidate="" autocomplete="off">
+                    {% csrf_token %}
+                        <div class="row justify-content-evenly p-4">
+                            <div class="mb-3 col-12 col-md-7 ">
+                                <p class="text-center">Select your faculty and feel free to ask your doubts..!</p>
+
+                               <!-- <label for="title" class="form-label fw-bold"> <i class="bi bi-clipboard-fill  ms-2 me-1"></i>Title</label>
+                                <input type="text" class="form-control p-3"  name="msg-title" placeholder="Set a tittle" required >-->
+                            </div>
+
+                            <div class="mb-3 col-12 col-md-7 ">
+                                <label for="faculty" class="form-label fw-bold"> <i class="bi bi-person-circle ms-2 me-1"></i> Select Faculty</label>
+                                <select class="form-select p-3" name="msg-faculty" required >
+                                    <option selected value="">Choose Faculty</option>
+                                    {% for i in totfaculty %}
+                                    <option value="{{ i.faculty_name}}">{{ i.faculty_name}}</option>
+                                    {% endfor %}
+                                   
+                                  </select>
+                            </div>
+
+                            <div class="mb-3 col-12 col-md-7 ">
+                                <label for="Confirm_password" class="form-label fw-bold"> <i class="bi bi-chat-dots-fill ms-2 me-1    "></i> Type your message</label>
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a comment here" name="msg-desc" id="floatingTextarea2" style="height: 100px" required ></textarea>
+                                    <label for="floatingTextarea2">Comments</label>
+                                  </div>
+                                  
+                            </div>
+
+
+
+                            <center><button type="submit" class="btn mt-3 fw-bold mb-4" style="padding: 5px 30px 5px 30px; background-color: black ; color: aliceblue;">Submit</button></center>
+
+                        </div>
+                </form>
+                {% if msgsuccess %}
+                    <script language="JavaScript">alert('Your Message has been sent')</script>
+                {% endif %}
+
+
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock  %}
